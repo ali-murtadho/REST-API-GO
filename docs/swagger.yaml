@@ -1,0 +1,271 @@
+definitions:
+  controllers.AgeRatingCategoryInput:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    type: object
+  controllers.MovieInput:
+    properties:
+      age_rating_category_id:
+        type: integer
+      title:
+        type: string
+      year:
+        type: integer
+    type: object
+  models.AgeRatingCategory:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Movie:
+    properties:
+      age_rating_category_id:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      year:
+        type: integer
+    type: object
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+paths:
+  /age-rating-categories:
+    get:
+      description: Get List of Age Rating Category
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.AgeRatingCategory'
+            type: array
+      summary: Get All Age Rating Category
+      tags:
+      - AgeRatingCategory
+    post:
+      description: create new Age Rating Category
+      parameters:
+      - description: the body to create new age rating category
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AgeRatingCategoryInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AgeRatingCategory'
+      summary: Create Age Rating Category
+      tags:
+      - AgeRatingCategory
+  /age-rating-categories/{id}:
+    delete:
+      description: delete one Age Rating Category by id
+      parameters:
+      - description: Age Eating Category Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: delete an Age Rating Category by id
+      tags:
+      - AgeRatingCategory
+    get:
+      description: Get one Age Rating Category by id
+      parameters:
+      - description: Age Eating Category Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AgeRatingCategory'
+      summary: Get an Age Rating Category by id
+      tags:
+      - AgeRatingCategory
+    patch:
+      description: update one Age Rating Category by id
+      parameters:
+      - description: Age Eating Category Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to create new age rating category
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.AgeRatingCategoryInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AgeRatingCategory'
+      summary: update an Age Rating Category by id
+      tags:
+      - AgeRatingCategory
+  /age-rating-categories/{id}/movies:
+    get:
+      description: Get all movies of Age Rating Category by id
+      parameters:
+      - description: Age Eating Category Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Movie'
+            type: array
+      summary: Get movies by Age Rating Category by id
+      tags:
+      - AgeRatingCategory
+  /movies:
+    get:
+      description: Get List of Movie
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Movie'
+            type: array
+      summary: Get All Movie
+      tags:
+      - Movie
+    post:
+      description: create new Movie
+      parameters:
+      - description: the body to create new Movie
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.MovieInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Movie'
+      summary: Create Movie
+      tags:
+      - Movie
+  /movies/{id}:
+    delete:
+      description: delete one Movie by id
+      parameters:
+      - description: Movie Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: boolean
+            type: object
+      summary: delete an Movie by id
+      tags:
+      - Movie
+    get:
+      description: Get one Movie by id
+      parameters:
+      - description: Movie Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Movie'
+      summary: Get an Movie by id
+      tags:
+      - Movie
+    patch:
+      description: update one Movie by id
+      parameters:
+      - description: Movie Id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: the body to create new Movie
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.MovieInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Movie'
+      summary: update an Movie by id
+      tags:
+      - Movie
+swagger: "2.0"
